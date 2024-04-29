@@ -13,9 +13,7 @@ internal class Program
         HttpClient client = new HttpClient();
         int number = 3;
         client.BaseAddress = new Uri("https://api.thecatapi.com/v1/");
-        var response = await client.GetAsync("images/search?limit="+ number +"&breed_ids=beng&api_key=live_eCz0IGWhoAhklyg10ShgXKAq9Tqh8QHotBXqaxLAaRfBdIg5ZnFjmF448mCQwVMF");
-        
-        Console.WriteLine($"Status Code: {response.StatusCode} Content: {await response.Content.ReadAsStringAsync()}");
+        var response = await client.GetAsync($"images/search?limit="+ number +"&breed_ids=beng&api_key=live_eCz0IGWhoAhklyg10ShgXKAq9Tqh8QHotBXqaxLAaRfBdIg5ZnFjmF448mCQwVMF");
         var content = await response.Content.ReadFromJsonAsync<List<Cat>>();
         foreach (var cat in content)
                 {
